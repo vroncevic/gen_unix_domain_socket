@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-# gen_uds.py
+# gen_unix_domain_socket.py
 # Copyright (C) 2019 Vladimir Roncevic <elektron.ronca@gmail.com>
 #
-# gen_uds is free software: you can redistribute it and/or modify it
+# gen_unix_domain_socket is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
 # Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# gen_uds is distributed in the hope that it will be useful, but
+# gen_unix_domain_socket is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the GNU General Public License for more details.
@@ -22,7 +22,7 @@ from os import getcwd
 try:
     from pathlib import Path
 
-    from uds.uds_setup import UDSSetup
+    from unix_domain_socket.unix_domain_socket_setup import UDSSetup
     from ats_utilities.cfg_base import CfgBase
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
@@ -57,8 +57,8 @@ class GenUDS(CfgBase):
     """
 
     __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
-    VERBOSE = 'GEN_UDS'
-    __CONFIG = '/../conf/gen_uds.cfg'
+    VERBOSE = 'GEN_UNIX_DOMAIN_SOCKET'
+    __CONFIG = '/../conf/gen_unix_domain_socket.cfg'
     __OPS = ['-g', '--gen', '-h', '--version']
 
     def __init__(self, verbose=False):
@@ -118,6 +118,6 @@ class GenUDS(CfgBase):
             else:
                 error_message(self.name, 'project already exist !')
         else:
-            error_message('gen_uds', 'Tool is not operational')
+            error_message('gen_unix_domain_socket', 'Tool is not operational')
         return True if status else False
 
