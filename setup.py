@@ -6,18 +6,18 @@
      setup.py
  Copyright
      Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
-     gen_message_queue is free software: you can redistribute it and/or
+     gen_unix_domain_socket is free software: you can redistribute it and/or
      modify it under the terms of the GNU General Public License as published
      by the Free Software Foundation, either version 3 of the License, or
      (at your option) any later version.
-     gen_message_queue is distributed in the hope that it will be useful, but
-     WITHOUT ANY WARRANTY; without even the implied warranty of
+     gen_unix_domain_socket is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
      See the GNU General Public License for more details.
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define setup for tool gen_message_queue.
+     Define setup for tool gen_unix_domain_socket.
 """
 
 from __future__ import print_function
@@ -26,9 +26,9 @@ from os.path import abspath, dirname, join, exists
 from setuptools import setup
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2018, https://vroncevic.github.io/gen_message_queue'
+__copyright__ = 'Copyright 2018, https://bit.ly/3j6QOtZ'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_message_queue/blob/dev/LICENSE'
+__license__ = 'https://bit.ly/3vMKs5L'
 __version__ = '1.0.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
@@ -74,7 +74,7 @@ def install_directory():
     return None
 
 INSTALL_DIR = install_directory()
-TOOL_DIR = 'gen_message_queue/'
+TOOL_DIR = 'gen_unix_domain_socket/'
 if not bool(INSTALL_DIR):
     print('[setup] force exit from install process')
     sys.exit(127)
@@ -99,52 +99,44 @@ APPROVED_LICENSES = [
 ]
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
-    name='gen_message_queue',
+    name='gen_unix_domain_socket',
     version='1.0.0',
-    description='Generating Message Queue',
+    description='Generating Unix Domain Socket',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
-    url='https://vroncevic.github.io/gen_message_queue',
+    url='https://vroncevic.github.io/gen_unix_domain_socket',
     license='GPL 2018 Free software to use and distributed it.',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
-    keywords='Unix, Linux, Development, Message Queue, Modules',
+    keywords='Unix, Linux, Development, Unix Domain Socket, Modules',
     platforms='POSIX',
     classifiers=PYP_CLASSIFIERS,
     packages=[
-        'gen_message_queue', 'gen_message_queue.pro',
-        'gen_message_queue.pro.config'
+        'gen_unix_domain_socket', 'gen_unix_domain_socket.pro',
+        'gen_unix_domain_socket.pro.config'
     ],
     install_requires=['ats-utilities'],
     package_data = {
-        'gen_message_queue': [
-            'conf/gen_message_queue.cfg',
-            'conf/gen_message_queue_util.cfg',
+        'gen_unix_domain_socket': [
+            'conf/gen_unix_domain_socket.cfg',
+            'conf/gen_unix_domain_socket_util.cfg',
             'conf/project.yaml',
-            'conf/template/mq_posix/mq_posix.template',
-            'conf/template/mq_posix/mq_posix_close.template',
-            'conf/template/mq_posix/mq_posix_fatal_error.template',
-            'conf/template/mq_posix/mq_posix_open.template',
-            'conf/template/mq_posix/mq_posix_open_mode.template',
-            'conf/template/mq_posix/mq_posix_receive.template',
-            'conf/template/mq_posix/mq_posix_send.template',
-            'conf/template/mq_posix/mq_posix_unlink.template',
-            'conf/template/mq_sysv/mq_sysv.template',
-            'conf/template/mq_sysv/mq_sysv_control.template',
-            'conf/template/mq_sysv/mq_sysv_file_to_key.template',
-            'conf/template/mq_sysv/mq_sysv_get_buffer.template',
-            'conf/template/mq_sysv/mq_sysv_get_buffer_type.template',
-            'conf/template/mq_sysv/mq_sysv_key_to_id.template',
-            'conf/template/mq_sysv/mq_sysv_receive.template',
-            'conf/template/mq_sysv/mq_sysv_send.template',
-            'conf/template/mq_sysv/mq_sysv_set_buffer.template',
-            'conf/template/mq_sysv/mq_sysv_set_buffer_type.template',
-            'log/gen_message_queue.log'
+            'conf/template/posix/uds.template',
+            'conf/template/posix/uds_fatal_error.template',
+            'conf/template/posix/uds_socket.template',
+            'conf/template/posix/uds_accept.template',
+            'conf/template/posix/uds_bind.template',
+            'conf/template/posix/uds_connect.template',
+            'conf/template/posix/uds_listen.template',
+            'conf/template/posix/uds_read.template',
+            'conf/template/posix/uds_write.template',
+            'conf/template/posix/uds_unlink.template',
+            'log/gen_unix_domain_socket.log'
         ]
     },
     data_files=[(
         '/usr/local/bin/', [
-            '{0}{1}'.format(TOOL_DIR, 'run/gen_message_queue_run.py')
+            '{0}{1}'.format(TOOL_DIR, 'run/gen_unix_domain_socket_run.py')
         ]
     )]
 )
