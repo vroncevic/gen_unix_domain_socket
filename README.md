@@ -94,7 +94,36 @@ Base flow of generation process:
 Generator structure:
 
 ```
-
+gen_unix_domain_socket/
+├── conf/
+│   ├── gen_unix_domain_socket.cfg
+│   ├── gen_unix_domain_socket_util.cfg
+│   ├── project.yaml
+│   └── template/
+│       └── posix/
+│           ├── uds_accept.template
+│           ├── uds_bind.template
+│           ├── uds_connect.template
+│           ├── uds_fatal_error.template
+│           ├── uds_listen.template
+│           ├── uds_read.template
+│           ├── uds_socket.template
+│           ├── uds.template
+│           ├── uds_unlink.template
+│           └── uds_write.template
+├── __init__.py
+├── log/
+│   └── gen_unix_domain_socket.log
+├── pro/
+│   ├── config/
+│   │   ├── __init__.py
+│   │   ├── pro_name.py
+│   │   └── template_dir.py
+│   ├── __init__.py
+│   ├── read_template.py
+│   └── write_template.py
+└── run/
+    └── gen_unix_domain_socket_run.py
 ```
 
 ### Docs
