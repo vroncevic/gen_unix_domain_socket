@@ -60,11 +60,15 @@
  */
 int uds_accept(
     int socket_descriptor,
-    struct sockaddr *restrict address,
-    socklen_t *restrict address_length
+    struct sockaddr * restrict address,
+    socklen_t * restrict address_length
 ) {
     int file_descriptor;
-    file_descriptor = accept(socket_descriptor, address, address_length);
+    if (socket_descriptor >= 0 && address != NULL) {
+        file_descriptor = accept(socket_descriptor, address, address_length);
+    } else {
+        file_descriptor = UDS_ERROR;
+    }
     return file_descriptor;
 }
 

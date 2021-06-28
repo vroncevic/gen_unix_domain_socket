@@ -30,6 +30,8 @@ extern "C" {
 #include <sys/un.h>
 #include <sys/socket.h>
 
+#define BACK_LOG_MAXIMUM_LENGTH 5
+
 /**
  * Description:
  *     Accept a connection on a socket.
@@ -52,9 +54,9 @@ extern "C" {
  */
 int uds_accept(
     int socket_descriptor,
-    struct sockaddr *restrict address,
-    socklen_t *restrict address_length
-);
+    struct sockaddr * restrict address,
+    socklen_t * restrict address_length
+) __attribute__((nonnull (2)));
 
 /**
  * Description:
@@ -97,9 +99,9 @@ int uds_bind(int file_descriptor, struct sockaddr_un address);
  */
 int uds_connect(
     int socket_descriptor,
-    const struct sockaddr *address,
+    const struct sockaddr * address,
     socklen_t address_length
-);
+) __attribute__((nonnull (2)));
 
 /**
  * Description:
@@ -138,7 +140,7 @@ int uds_socket(void);
  * Standards:
  *     POSIX.1-2001, POSIX.1-2008
  */
-int uds_unlink(const char *socket_path);
+int uds_unlink(const char * socket_path) __attribute__((nonnull (1)));
 
 /**
  * Description:
@@ -159,7 +161,9 @@ int uds_unlink(const char *socket_path);
  * Standards:
  *     POSIX.1-2001, POSIX.1-2008
  */
-ssize_t uds_write(int file_descriptor, const void *buffer, size_t count);
+ssize_t uds_write(
+    int file_descriptor, const void * buffer, size_t count
+) __attribute__((nonnull (2)));
 
 /**
  * Description:
@@ -181,7 +185,9 @@ ssize_t uds_write(int file_descriptor, const void *buffer, size_t count);
  * Standards:
  *     POSIX.1-2001, POSIX.1-2008
  */
-ssize_t uds_read(int file_descriptor, void *buffer, size_t count);
+ssize_t uds_read(
+    int file_descriptor, void * buffer, size_t count
+) __attribute__((nonnull (2)));
 
 /**
  * Description:

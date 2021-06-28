@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://bit.ly/3j6QOtZ'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://bit.ly/3vMKs5L'
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -93,7 +93,7 @@ class GenUnixDomainSocket(CfgCLI):
         if self.tool_operational:
             self.add_new_option(
                 GenUnixDomainSocket.OPS[0], GenUnixDomainSocket.OPS[1],
-                dest='gen', help='generate option'
+                dest='gen', help='generate unix domain modules'
             )
             self.add_new_option(
                 GenUnixDomainSocket.OPS[2], GenUnixDomainSocket.OPS[3],
@@ -145,7 +145,8 @@ class GenUnixDomainSocket(CfgCLI):
                         )
                         self.logger.write_log(
                             '{0} {1} done'.format(
-                                'generating tool/gen', getattr(args, 'gen')
+                                'generating unix domain modules for',
+                                getattr(args, 'gen')
                             ), ATSLogger.ATS_INFO
                         )
                     else:

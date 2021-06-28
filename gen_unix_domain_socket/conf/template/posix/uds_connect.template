@@ -84,11 +84,15 @@
  */
 int uds_connect(
     int socket_descriptor,
-    const struct sockaddr *address,
+    const struct sockaddr * address,
     socklen_t address_length
 ) {
     int status;
-    status = connect(socket_descriptor, address, address_length);
+    if (socket_descriptor >= 0 && address != NULL) {
+        status = connect(socket_descriptor, address, address_length);
+    } else {
+        status = UDS_ERROR;
+    }
     return status;
 }
 

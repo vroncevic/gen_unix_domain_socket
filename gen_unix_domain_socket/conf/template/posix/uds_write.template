@@ -26,7 +26,7 @@
  * Arguments:
  *     file_descriptor - file descriptor
  *     buffer - socket address structure
- *     count -  size of peer address
+ *     count - size of peer address
  *
  * Return value:
  *     number_of_bytes - on success, the number of bytes written is returned |
@@ -74,9 +74,13 @@
  * Standards:
  *     POSIX.1-2001, POSIX.1-2008
  */
-ssize_t uds_write(int file_descriptor, const void *buffer, size_t count) {
+ssize_t uds_write(int file_descriptor, const void * buffer, size_t count) {
     ssize_t number_of_bytes;
-    number_of_bytes = write(file_descriptor, buffer, count);
+    if (file_descriptor >= 0 && buffer != NULL) {
+        number_of_bytes = write(file_descriptor, buffer, count);
+    } else {
+        number_of_bytes = UDS_ERROR;
+    }
     return number_of_bytes;
 }
 

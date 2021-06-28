@@ -41,7 +41,11 @@
  */
 int uds_listen(int file_descriptor) {
     int status;
-    status = listen(file_descriptor, 5);
+    if (file_descriptor >= 0) {
+        status = listen(file_descriptor, BACK_LOG_MAXIMUM_LENGTH);
+    } else {
+        status = UDS_ERROR;
+    }
     return status;
 }
 

@@ -55,9 +55,13 @@
  * Standards:
  *     POSIX.1-2001, POSIX.1-2008
  */
-int uds_unlink(const char *socket_path) {
+int uds_unlink(const char * socket_path) {
     int status;
-    status = unlink(socket_path);
+    if (socket_path != NULL) {
+        status = unlink(socket_path);
+    } else {
+        status = UDS_ERROR;
+    }
     return status;
 }
 
