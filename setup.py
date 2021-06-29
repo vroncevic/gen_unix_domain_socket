@@ -29,10 +29,11 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://bit.ly/3j6QOtZ'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://bit.ly/3vMKs5L'
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
+
 
 def install_directory():
     '''
@@ -73,6 +74,7 @@ def install_directory():
     print(message)
     return None
 
+
 INSTALL_DIR = install_directory()
 TOOL_DIR = 'gen_unix_domain_socket/'
 if not bool(INSTALL_DIR):
@@ -100,7 +102,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_unix_domain_socket',
-    version='1.0.1',
+    version='1.0.2',
     description='Generating Unix Domain Socket',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
