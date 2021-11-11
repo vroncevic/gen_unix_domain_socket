@@ -24,6 +24,7 @@ import sys
 from os.path import exists
 
 try:
+    from six import add_metaclass
     from pathlib import Path
     from gen_unix_domain_socket.pro import UnixDomainSocket
     from ats_utilities.logging import ATSLogger
@@ -40,12 +41,13 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://bit.ly/3j6QOtZ'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://bit.ly/3vMKs5L'
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
+@add_metaclass(CooperativeMeta)
 class GenUnixDomainSocket(CfgCLI):
     '''
         Defined class GenUnixDomainSocket with attribute(s) and method(s).
@@ -53,7 +55,6 @@ class GenUnixDomainSocket(CfgCLI):
         It defines:
 
             :attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | CONFIG - tool info file path.
                 | LOG - tool log file path.
@@ -65,7 +66,6 @@ class GenUnixDomainSocket(CfgCLI):
                 | __str__ - dunder method for GenUnixDomainSocket.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_UNIX_DOMAIN_SOCKET'
     CONFIG = '/conf/gen_unix_domain_socket.cfg'
     LOG = '/log/gen_unix_domain_socket.log'
