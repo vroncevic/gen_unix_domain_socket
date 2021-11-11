@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2018, https://bit.ly/3j6QOtZ'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://bit.ly/3vMKs5L'
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -102,7 +102,7 @@ APPROVED_LICENSES = [
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_unix_domain_socket',
-    version='1.0.2',
+    version='1.0.3',
     description='Generating Unix Domain Socket',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
