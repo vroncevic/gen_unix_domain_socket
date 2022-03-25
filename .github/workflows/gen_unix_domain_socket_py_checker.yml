@@ -2,8 +2,14 @@ name: gen_unix_domain_socket py checker
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'gen_unix_domain_socket/**'
+      - 'setup.py'
   pull_request:
     branches: [ master ]
+    paths:
+      - 'gen_unix_domain_socket/**'
+      - 'setup.py'
 jobs:
   build:
     runs-on: ubuntu-latest

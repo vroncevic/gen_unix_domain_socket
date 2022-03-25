@@ -118,8 +118,9 @@ setup(
         'gen_unix_domain_socket.pro.config'
     ],
     install_requires=['ats-utilities'],
-    package_data = {
+    package_data={
         'gen_unix_domain_socket': [
+            'conf/gen_unix_domain_socket.logo',
             'conf/gen_unix_domain_socket.cfg',
             'conf/gen_unix_domain_socket_util.cfg',
             'conf/project.yaml',

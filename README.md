@@ -32,7 +32,7 @@ other information that should be provided before the modules are installed.
 
 ![Install Python2 Package](https://github.com/vroncevic/gen_unix_domain_socket/workflows/Install%20Python2%20Package%20gen_unix_domain_socket/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_unix_domain_socket/workflows/Install%20Python3%20Package%20gen_unix_domain_socket/badge.svg?branch=master)
 
-Currently there are three ways to install tool:
+Currently there are three ways to install tool
 * Install process based on pip
 * Install process based on setup.py (setuptools)
 * Install process based on docker mechanism
@@ -42,7 +42,8 @@ Currently there are three ways to install tool:
 Python package is located at **[pypi.org](https://pypi.org/project/gen-unix-domain-socket/)**.
 
 You can install by using pip
-```
+
+```bash
 # python2
 pip install gen-unix-domain-socket
 # python3
@@ -54,7 +55,8 @@ pip3 install gen-unix-domain-socket
 Navigate to release **[page](https://github.com/vroncevic/gen_unix_domain_socket/releases/)** download and extract release archive.
 
 To install modules, locate and run setup.py with arguments
-```
+
+```bash
 tar xvzf gen_unix_domain_socket-x.y.z.tar.gz
 cd gen_unix_domain_socket-x.y.z/
 # python2
@@ -77,25 +79,26 @@ You can use docker to create image/container.
 
 ### Dependencies
 
-**gen_unix_domain_socket** requires next modules and libraries:
+**gen_unix_domain_socket** requires next modules and libraries
 
 * [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 
 ### Generation flow of py module
 
-Base flow of generation process:
+Base flow of generation process
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_unix_domain_socket/dev/docs/gen_unix_domain_socket_flow.png)
 
 ### Tool structure
 
-**gen_unix_domain_socket** is based on OOP:
+**gen_unix_domain_socket** is based on OOP
 
-Generator structure:
+Generator structure
 
-```
+```bash
 gen_unix_domain_socket/
 ├── conf/
+│   ├── gen_unix_domain_socket.logo
 │   ├── gen_unix_domain_socket.cfg
 │   ├── gen_unix_domain_socket_util.cfg
 │   ├── project.yaml
@@ -130,7 +133,7 @@ gen_unix_domain_socket/
 
 [![Documentation Status](https://readthedocs.org/projects/gen_unix_domain_socket/badge/?version=latest)](https://gen_unix_domain_socket.readthedocs.io/projects/gen_unix_domain_socket/en/latest/?badge=latest)
 
-More documentation and info at:
+More documentation and info at
 * [gen_unix_domain_socket.readthedocs.io](https://gen_unix_domain_socket.readthedocs.io/en/latest/)
 * [www.python.org](https://www.python.org/)
 
