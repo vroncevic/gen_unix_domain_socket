@@ -1,141 +1,108 @@
 # -*- coding: UTF-8 -*-
 
 '''
- Module
-     read_template.py
- Copyright
-     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
-     gen_unix_domain_socket is free software: you can redistribute it and/or
-     modify it under the terms of the GNU General Public License as published
-     by the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     gen_unix_domain_socket is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-     See the GNU General Public License for more details.
-     You should have received a copy of the GNU General Public License along
-     with this program. If not, see <http://www.gnu.org/licenses/>.
- Info
-     Defined class ReadTemplate with attribute(s) and method(s).
-     Created API for read a template file and return a content.
+Module
+    read_template.py
+Copyright
+    Copyright (C) 2017 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+    gen_unix_domain_socket is free software: you can redistribute it and/or
+    modify it under the terms of the GNU General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    gen_unix_domain_socket is distributed in the hope that it will be useful,
+    but SWITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+Info
+    Defines class ReadTemplate with attribute(s) and method(s).
+    Creates an API for reading a UDS template.
 '''
 
 import sys
-from os.path import isdir, dirname, realpath
+from typing import Any, List, Dict
+from os.path import dirname, realpath
 
 try:
-    from gen_unix_domain_socket.pro.config import ProConfig
-    from gen_unix_domain_socket.pro.config.template_dir import TemplateDir
-    from ats_utilities.checker import ATSChecker
-    from ats_utilities.config_io.base_check import FileChecking
+    from ats_utilities.config_io.file_check import FileCheck
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
-    from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
+    from ats_utilities.exceptions.ats_value_error import ATSValueError
 except ImportError as ats_error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
-    sys.exit(MESSAGE)  # Force close python ATS ##############################
+    # Force close python ATS ##################################################
+    sys.exit(f'\n{__file__}\n{ats_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2018, https://bit.ly/3j6QOtZ'
-__credits__ = ['Vladimir Roncevic']
+__copyright__ = '(C) 2024, https://vroncevic.github.io/gen_form_model'
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://bit.ly/3vMKs5L'
-__version__ = '1.0.3'
+__version__ = '1.0.4'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class ReadTemplate(FileChecking, TemplateDir):
+class ReadTemplate(FileCheck):
     '''
-        Defined class ReadTemplate with attribute(s) and method(s).
-        Created API for read a template file and return a content.
+        Defines class ReadTemplate with attribute(s) and method(s).
+        Creates an API for reading a PY MODULE template.
+
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - console text indicator for process-phase.
-                | TEMPLATE_DIR - template dir path.
-                | __template_dir - absolute file path of template dir.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _TEMPLATE_DIR - Prefix path to templates.
             :methods:
-                | __init__ - initial constructor.
-                | read - read a template and return a string representation.
-                | __str__ - dunder method for ReadTemplate.
+                | __init__ - Initials ReadTemplate constructor.
+                | read - Reads a template.
     '''
 
-    GEN_VERBOSE = 'GEN_UNIX_DOMAIN_SOCKET::PRO::READ_TEMPLATE'
-    TEMPLATE_DIR = '/../conf/template/'
+    _GEN_VERBOSE: str = 'GEN_UNIX_DOMAIN_SOCKET::PRO::READ_TEMPLATE'
+    _TEMPLATE_DIR: str = '/../conf/template/'
 
-    def __init__(self, verbose=False):
+    def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial constructor.
+            Initials ReadTemplate constructor.
 
-            :param verbose: enable/disable verbose option.
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :exceptions: None
         '''
-        FileChecking.__init__(self, verbose=verbose)
-        TemplateDir.__init__(self, verbose=verbose)
-        verbose_message(ReadTemplate.GEN_VERBOSE, verbose, 'init reader')
-        pro_template_dir = '{0}{1}'.format(
-            dirname(realpath(__file__)), ReadTemplate.TEMPLATE_DIR
-        )
-        if isdir(pro_template_dir):
-            self.template_dir = pro_template_dir
+        super().__init__(verbose)
+        verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} init reader'])
 
-    def read(self, config, uds_type, verbose=False):
+    def read(
+        self, config: Dict[Any, Any], verbose: bool = False
+    ) -> Dict[str, str]:
         '''
-            Read a templates and return a content.
+            Reads a template.
 
-            :param config: parameter file name.
-            :type config: <dict>
-            :param uds_type: parameter UDS type.
-            :type uds_type: <str>
-            :param verbose: enable/disable verbose option.
+            :param config: Project configuration
+            :type config: <Dict[Any, Any]>
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
-            :return: template content list | empty list.
-            :rtype: <list>
-            :exceptions: ATSTypeError | ATSBadCallError
+            :return: Loaded templates
+            :rtype: <Dict[str, str]>
+            :exceptions: ATSTypeError | ATSValueError
         '''
-        checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params([
-            ('dict:config', config), ('str:uds_type', uds_type)
-        ])
-        if status == ATSChecker.TYPE_ERROR:
-            raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR:
-            raise ATSBadCallError(error)
-        templates, modules, loaded_templates = None, None, []
-        for configuration in config[ProConfig.TEMPLATES]:
-            if configuration.has_key(uds_type):
-                templates = configuration[uds_type]
-        for configuration in config[ProConfig.MODULES]:
-            if configuration.has_key(uds_type):
-                modules = configuration[uds_type]
-        for template_file, module_file in zip(templates, modules):
-            template_content, template_file_path = None, None
-            template_file_path = '{0}{1}/{2}'.format(
-                self.template_dir, uds_type, template_file
+        error_msg: str | None = None
+        error_id: int | None = None
+        error_msg, error_id = self.check_params([('dict:config', config)])
+        if error_id == self.TYPE_ERROR:
+            raise ATSTypeError(error_msg)
+        if not bool(config):
+            raise ATSValueError('missing project templates')
+        current_dir: str = dirname(realpath(__file__))
+        pro_structure: str = f'{current_dir}{self._TEMPLATE_DIR}'
+        template_content: Dict[str, str] = {}
+        modules: List[str] = config['modules']
+        templates: List[str] = config['templates']
+        for module, template in zip(modules, templates):
+            template_file: str = f'{pro_structure}/{template}'
+            with open(template_file, 'r', encoding='utf-8') as unp_template:
+                template_content[module] = unp_template.read()
+            verbose_message(
+                verbose, [f'{self._GEN_VERBOSE.lower()} {template_content}']
             )
-            self.check_path(file_path=template_file_path, verbose=verbose)
-            self.check_mode(file_mode='r', verbose=verbose)
-            self.check_format(
-                file_path=template_file_path, file_format=ProConfig.FORMAT,
-                verbose=verbose
-            )
-            if self.is_file_ok():
-                with open(template_file_path, 'r') as template_module:
-                    template_content = template_module.read()
-                    loaded_templates.append({module_file: template_content})
-        return loaded_templates
-
-    def __str__(self):
-        '''
-            Dunder method for ReadTemplate.
-
-            :return: object in a human-readable format.
-            :rtype: <str>
-            :exceptions: None
-        '''
-        return '{0} ({1}, {2})'.format(
-            self.__class__.__name__, FileChecking.__str__(self),
-            TemplateDir.__str__(self)
-        )
+        return template_content

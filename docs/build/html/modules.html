@@ -1,26 +1,22 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>gen_unix_domain_socket &#8212; gen_unix_domain_socket https://github.com/vroncevic/gen_unix_domain_socket/releases documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/documentation_options.js?v=7999e770"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="gen_unix_domain_socket package" href="gen_unix_domain_socket.html" />
-    <link rel="prev" title="Generate Unix Domain Socket" href="index.html" /> 
+    <link rel="prev" title="UDS code generator" href="index.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -35,7 +31,7 @@
           <a href="gen_unix_domain_socket.html" title="gen_unix_domain_socket package"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Generate Unix Domain Socket"
+          <a href="index.html" title="UDS code generator"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">gen_unix_domain_socket https://github.com/vroncevic/gen_unix_domain_socket/releases documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">gen_unix_domain_socket</a></li> 
@@ -48,20 +44,30 @@
           <div class="body" role="main">
             
   <section id="gen-unix-domain-socket">
-<h1>gen_unix_domain_socket<a class="headerlink" href="#gen-unix-domain-socket" title="Permalink to this heading">¶</a></h1>
+<h1>gen_unix_domain_socket<a class="headerlink" href="#gen-unix-domain-socket" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gen_unix_domain_socket.html">gen_unix_domain_socket package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gen_unix_domain_socket.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gen_unix_domain_socket.pro.html">gen_unix_domain_socket.pro package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.pro.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.pro.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.pro.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.pro.html#module-gen_unix_domain_socket.pro">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="gen_unix_domain_socket.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gen_unix_domain_socket.html#module-gen_unix_domain_socket">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gen_unix_domain_socket.html#gen_unix_domain_socket.GenUnixDomainSocket"><code class="docutils literal notranslate"><span class="pre">GenUnixDomainSocket</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.html#gen_unix_domain_socket.GenUnixDomainSocket._CONFIG"><code class="docutils literal notranslate"><span class="pre">GenUnixDomainSocket._CONFIG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.html#gen_unix_domain_socket.GenUnixDomainSocket._GEN_VERBOSE"><code class="docutils literal notranslate"><span class="pre">GenUnixDomainSocket._GEN_VERBOSE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.html#gen_unix_domain_socket.GenUnixDomainSocket._LOG"><code class="docutils literal notranslate"><span class="pre">GenUnixDomainSocket._LOG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.html#gen_unix_domain_socket.GenUnixDomainSocket._LOGO"><code class="docutils literal notranslate"><span class="pre">GenUnixDomainSocket._LOGO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.html#gen_unix_domain_socket.GenUnixDomainSocket._OPS"><code class="docutils literal notranslate"><span class="pre">GenUnixDomainSocket._OPS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_unix_domain_socket.html#gen_unix_domain_socket.GenUnixDomainSocket.process"><code class="docutils literal notranslate"><span class="pre">GenUnixDomainSocket.process()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -78,7 +84,7 @@
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="index.html"
-                          title="previous chapter">Generate Unix Domain Socket</a></p>
+                          title="previous chapter">UDS code generator</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -119,15 +125,15 @@
           <a href="gen_unix_domain_socket.html" title="gen_unix_domain_socket package"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Generate Unix Domain Socket"
+          <a href="index.html" title="UDS code generator"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">gen_unix_domain_socket https://github.com/vroncevic/gen_unix_domain_socket/releases documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">gen_unix_domain_socket</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    &#169; Copyright 2024, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>
