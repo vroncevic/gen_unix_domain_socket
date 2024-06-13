@@ -1,11 +1,11 @@
-name: TOC Generator gen_unix_domain_socket
+name: gen_unix_domain_socket_toc
 on:
   push:
     paths:
       - '**.md'
 jobs:
   generateTOC:
-    name: TOC Generator
+    name: gen_unix_domain_socket_toc
     runs-on: ubuntu-latest
     steps:
-      - uses: technote-space/toc-generator@v2
+      - uses: technote-space/toc-generator@v4
