@@ -1,5 +1,4 @@
-var DOCUMENTATION_OPTIONS = {
-    URL_ROOT: document.getElementById("documentation_options").getAttribute('data-url_root'),
+const DOCUMENTATION_OPTIONS = {
     VERSION: 'https://github.com/vroncevic/gen_unix_domain_socket/releases',
     LANGUAGE: 'en',
     COLLAPSE_INDEX: false,

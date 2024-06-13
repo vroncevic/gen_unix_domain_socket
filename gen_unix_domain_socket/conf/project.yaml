@@ -1,5 +1,4 @@
 templates:
-  - posix:
     - uds.template
     - uds_fatal_error.template
     - uds_socket.template
@@ -10,10 +9,8 @@ templates:
     - uds_read.template
     - uds_write.template
     - uds_unlink.template
-  - cancel: null
 
 modules:
-  - posix:
     - uds.h
     - uds_fatal_error.c
     - uds_socket.c

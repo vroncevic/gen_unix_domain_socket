@@ -1,63 +1,58 @@
-Generate Unix Domain Socket
-----------------------------
+UDS code generator
+====================
 
-**gen_unix_domain_socket** is framework for generation Unix Domain Socket modules.
+**gen_unix_domain_socket** is toolset for generation of UDS skeleton for
+development embedded applications.
 
 Developed in `python <https://www.python.org/>`_ code.
 
-The README is used to introduce the modules and provide instructions on
-how to install the modules, any machine dependencies it may have and any
+The README is used to introduce the tool modules and provide instructions on
+how to install the tool modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-|Python package| |GitHub issues| |Documentation Status| |GitHub contributors|
+|gen_unix_domain_socket python checker| |gen_unix_domain_socket python package| |github issues| |documentation status| |github contributors|
 
-.. |Python package| image:: https://github.com/vroncevic/gen_unix_domain_socket/workflows/Python%20package%20gen_unix_domain_socket/badge.svg
-   :target: https://github.com/vroncevic/gen_unix_domain_socket/workflows/Python%20package%20gen_unix_domain_socket/badge.svg?branch=master
+.. |gen_unix_domain_socket python checker| image:: https://github.com/vroncevic/gen_unix_domain_socket/actions/workflows/gen_unix_domain_socket_python_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_unix_domain_socket/actions/workflows/gen_unix_domain_socket_python_checker.yml
 
-.. |GitHub issues| image:: https://img.shields.io/github/issues/vroncevic/gen_unix_domain_socket.svg
+.. |gen_unix_domain_socket python package| image:: https://github.com/vroncevic/gen_unix_domain_socket/actions/workflows/gen_unix_domain_socket_package_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_unix_domain_socket/actions/workflows/gen_unix_domain_socket_package.yml
+
+.. |github issues| image:: https://img.shields.io/github/issues/vroncevic/gen_unix_domain_socket.svg
    :target: https://github.com/vroncevic/gen_unix_domain_socket/issues
 
-.. |GitHub contributors| image:: https://img.shields.io/github/contributors/vroncevic/gen_unix_domain_socket.svg
+.. |github contributors| image:: https://img.shields.io/github/contributors/vroncevic/gen_unix_domain_socket.svg
    :target: https://github.com/vroncevic/gen_unix_domain_socket/graphs/contributors
 
-.. |Documentation Status| image:: https://readthedocs.org/projects/gen_unix_domain_socket/badge/?version=latest
-   :target: https://gen_unix_domain_socket.readthedocs.io/projects/gen_unix_domain_socket/en/latest/?badge=latest
+.. |documentation status| image:: https://readthedocs.org/projects/gen-unix-domain-socket/badge/?version=latest
+   :target: https://gen-unix-domain-socket.readthedocs.io/en/latest/?badge=latest
 
 .. toctree::
    :maxdepth: 4
    :caption: Contents
 
-   self
    modules
+   self
 
 Installation
 -------------
 
-|Install Python2 Package| |Install Python3 Package|
+|gen_unix_domain_socket python3 build|
 
-.. |Install Python2 Package| image:: https://github.com/vroncevic/gen_unix_domain_socket/workflows/Install%20Python2%20Package%20gen_unix_domain_socket/badge.svg
-   :target: https://github.com/vroncevic/gen_unix_domain_socket/workflows/Install%20Python2%20Package%20gen_unix_domain_socket/badge.svg?branch=master
-
-.. |Install Python3 Package| image:: https://github.com/vroncevic/gen_unix_domain_socket/workflows/Install%20Python3%20Package%20gen_unix_domain_socket/badge.svg
-   :target: https://github.com/vroncevic/gen_unix_domain_socket/workflows/Install%20Python3%20Package%20gen_unix_domain_socket/badge.svg?branch=master
+.. |gen_unix_domain_socket python3 build| image:: https://github.com/vroncevic/gen_unix_domain_socket/actions/workflows/gen_unix_domain_socket_python3_build.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_unix_domain_socket/actions/workflows/gen_unix_domain_socket_python3_build.yml
 
 Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/gen_unix_domain_socket/releases
 
-To install package type the following
+To install **gen_unix_domain_socket** type the following
 
 .. code-block:: bash
 
     tar xvzf gen_unix_domain_socket-x.y.z.tar.gz
     cd gen_unix_domain_socket-x.y.z/
-    # python2
-    pip install -r requirements.txt
-    python setup.py install_lib
-    python setup.py install_data
-    python setup.py install_egg_info
-    # pyton3
-    pip3 install -r requirements.txt
+    #python3
     python3 setup.py install_lib
     python3 setup.py install_data
     python3 setup.py install_egg_info
@@ -66,94 +61,83 @@ You can use Docker to create image/container, or You can use pip to install
 
 .. code-block:: bash
 
-    # python2
-    pip install gen-unix-domain-socket
-    # python3
+    #python3
     pip3 install gen-unix-domain-socket
-
-|GitHub docker checker|
-
-.. |GitHub docker checker| image:: https://github.com/vroncevic/gen_unix_domain_socket/workflows/gen_unix_domain_socket%20docker%20checker/badge.svg
-   :target: https://github.com/vroncevic/gen_unix_domain_socket/actions?query=workflow%3A%22gen_unix_domain_socket+docker+checker%22
 
 Dependencies
 -------------
 
-**gen_unix_domain_socket** requires next modules and libraries
+**gen_unix_domain_socket** tool-module requires other modules and libraries
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
-Framework structure
---------------------
+Tool structure
+---------------
 
-**gen_unix_domain_socket** is based on OOP
+**gen_unix_domain_socket** is based on Template mechanism
 
-.. image:: https://raw.githubusercontent.com/vroncevic/gen_unix_domain_socket/dev/docs/gen_unix_domain_socket_flow.png
-
-Framework structure
+Generator structure
 
 .. code-block:: bash
 
     gen_unix_domain_socket/
-    ├── conf/
-    │   ├── gen_unix_domain_socket.logo
-    │   ├── gen_unix_domain_socket.cfg
-    │   ├── gen_unix_domain_socket_util.cfg
-    │   ├── project.yaml
-    │   └── template/
-    │       └── posix/
-    │           ├── uds_accept.template
-    │           ├── uds_bind.template
-    │           ├── uds_connect.template
-    │           ├── uds_fatal_error.template
-    │           ├── uds_listen.template
-    │           ├── uds_read.template
-    │           ├── uds_socket.template
-    │           ├── uds.template
-    │           ├── uds_unlink.template
-    │           └── uds_write.template
-    ├── __init__.py
-    ├── log/
-    │   └── gen_unix_domain_socket.log
-    ├── pro/
-    │   ├── config/
-    │   │   ├── __init__.py
-    │   │   ├── pro_name.py
-    │   │   └── template_dir.py
-    │   ├── __init__.py
-    │   ├── read_template.py
-    │   └── write_template.py
-    └── run/
-        └── gen_unix_domain_socket_run.py
+        ├── conf/
+        │   ├── gen_unix_domain_socket.cfg
+        │   ├── gen_unix_domain_socket.logo
+        │   ├── gen_unix_domain_socket_util.cfg
+        │   ├── project.yaml
+        │   └── template/
+        │       ├── uds_accept.template
+        │       ├── uds_bind.template
+        │       ├── uds_connect.template
+        │       ├── uds_fatal_error.template
+        │       ├── uds_listen.template
+        │       ├── uds_read.template
+        │       ├── uds_socket.template
+        │       ├── uds.template
+        │       ├── uds_unlink.template
+        │       └── uds_write.template
+        ├── __init__.py
+        ├── log/
+        │   └── gen_unix_domain_socket.log
+        ├── pro/
+        │   ├── __init__.py
+        │   ├── read_template.py
+        │   └── write_template.py
+        ├── py.typed
+        └── run/
+            └── gen_unix_domain_socket_run.py
+    
+    6 directories, 21 files
 
 Copyright and licence
 ----------------------
 
-|License: GPL v3| |License: Apache 2.0|
+|license: gpl v3| |license: apache 2.0|
 
-.. |License: GPL v3| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+.. |license: gpl v3| image:: https://img.shields.io/badge/license-gplv3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0
 
-.. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
-   :target: https://opensource.org/licenses/Apache-2.0
+.. |license: apache 2.0| image:: https://img.shields.io/badge/license-apache%202.0-blue.svg
+   :target: https://opensource.org/licenses/apache-2.0
 
-Copyright (C) 2018 by `vroncevic.github.io/gen_unix_domain_socket <https://vroncevic.github.io/gen_unix_domain_socket>`_
+Copyright (C) 2017 - 2024 by `vroncevic.github.io/gen_unix_domain_socket <https://vroncevic.github.io/gen_unix_domain_socket>`_
 
 **gen_unix_domain_socket** is free software; you can redistribute it and/or modify
-it under the same terms as Python itself, either Python version 2.x/3.x or,
+it under the same terms as Python itself, either Python version 3.x or,
 at your option, any later version of Python 3 you may have available.
 
 Lets help and support PSF.
 
-|Python Software Foundation|
+|python software foundation|
 
-.. |Python Software Foundation| image:: https://raw.githubusercontent.com/vroncevic/gen_unix_domain_socket/dev/docs/psf-logo-alpha.png
+.. |python software foundation| image:: https://raw.githubusercontent.com/vroncevic/gen_unix_domain_socket/dev/docs/psf-logo-alpha.png
    :target: https://www.python.org/psf/
 
-|Donate|
+|donate|
 
-.. |Donate| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
-   :target: https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2
+.. |donate| image:: https://www.paypalobjects.com/en_us/i/btn/btn_donatecc_lg.gif
+   :target: https://www.python.org/psf/donations/
 
 Indices and tables
 ------------------
