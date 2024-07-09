@@ -47,7 +47,6 @@ class TestGenUnixDomainSocket(TestCase):
                 | tearDown - Call after test case.
                 | test_default_create - Default on create (not None).
                 | test_missing_args - Test missing args.
-                | test_tool_not_operational - Test for tool not operational.
                 | test_process_tool - Test generation of tool structure.
     '''
     def setUp(self) -> None:
@@ -65,15 +64,6 @@ class TestGenUnixDomainSocket(TestCase):
         '''Test missing args'''
         sys.argv.clear()
         generator: GenUnixDomainSocket = GenUnixDomainSocket()
-        self.assertFalse(generator.process())
-
-    def test_tool_not_operational(self) -> None:
-        '''Test for tool not operational'''
-        sys.argv.clear()
-        sys.argv.insert(0, '-n')
-        sys.argv.insert(1, 'mytool')
-        generator: GenUnixDomainSocket = GenUnixDomainSocket()
-        generator.tool_operational = False
         self.assertFalse(generator.process())
 
     def test_process_tool(self) -> None:

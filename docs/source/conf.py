@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 project: str = 'gen_unix_domain_socket'
 project_copyright: str = '2024, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author: str = 'Vladimir Roncevic <elektron.ronca@gmail.com>'
-version: str = '1.0.4'
+version: str = '1.0.5'
 release: str = 'https://github.com/vroncevic/gen_unix_domain_socket/releases'
 extensions: List[str] = [
     'sphinx.ext.autodoc', 'sphinx.ext.doctest',
