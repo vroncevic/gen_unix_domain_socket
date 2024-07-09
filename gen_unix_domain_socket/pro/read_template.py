@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import Any, List, Dict
+from typing import Any, List, Dict, Optional
 from os.path import dirname, realpath
 
 try:
@@ -37,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_form_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://bit.ly/3vMKs5L'
-__version__ = '1.0.4'
+__version__ = '1.0.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -86,8 +86,8 @@ class ReadTemplate(FileCheck):
             :rtype: <Dict[str, str]>
             :exceptions: ATSTypeError | ATSValueError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([('dict:config', config)])
         if error_id == self.TYPE_ERROR:
             raise ATSTypeError(error_msg)

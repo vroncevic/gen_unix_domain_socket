@@ -110,33 +110,45 @@ Generator structure
 
 ```bash
     gen_unix_domain_socket/
-        ├── conf/
-        │   ├── gen_unix_domain_socket.cfg
-        │   ├── gen_unix_domain_socket.logo
-        │   ├── gen_unix_domain_socket_util.cfg
-        │   ├── project.yaml
-        │   └── template/
-        │       ├── uds_accept.template
-        │       ├── uds_bind.template
-        │       ├── uds_connect.template
-        │       ├── uds_fatal_error.template
-        │       ├── uds_listen.template
-        │       ├── uds_read.template
-        │       ├── uds_socket.template
-        │       ├── uds.template
-        │       ├── uds_unlink.template
-        │       └── uds_write.template
-        ├── __init__.py
-        ├── log/
-        │   └── gen_unix_domain_socket.log
-        ├── pro/
-        │   ├── __init__.py
-        │   ├── read_template.py
-        │   └── write_template.py
-        ├── py.typed
-        └── run/
-            └── gen_unix_domain_socket_run.py
+            ├── conf/
+            │   ├── gen_unix_domain_socket.cfg
+            │   ├── gen_unix_domain_socket.logo
+            │   ├── gen_unix_domain_socket_util.cfg
+            │   ├── project.yaml
+            │   └── template/
+            │       ├── uds_accept.template
+            │       ├── uds_bind.template
+            │       ├── uds_connect.template
+            │       ├── uds_fatal_error.template
+            │       ├── uds_listen.template
+            │       ├── uds_read.template
+            │       ├── uds_socket.template
+            │       ├── uds.template
+            │       ├── uds_unlink.template
+            │       └── uds_write.template
+            ├── __init__.py
+            ├── log/
+            │   └── gen_unix_domain_socket.log
+            ├── pro/
+            │   ├── __init__.py
+            │   ├── read_template.py
+            │   └── write_template.py
+            ├── py.typed
+            └── run/
+                └── gen_unix_domain_socket_run.py
+
+    6 directories, 21 files
 ```
+
+### Code coverage
+
+| Name | Stmts | Miss | Cover |
+|------|-------|------|-------|
+| `gen_unix_domain_socket/__init__.py` | 71 | 14 | 80% |
+| `gen_unix_domain_socket/pro/__init__.py` | 60 | 6 | 90% |
+| `gen_unix_domain_socket/pro/read_template.py` | 43 | 4 | 91% |
+| `gen_unix_domain_socket/pro/write_template.py` | 51 | 5 | 90% |
+| **Total** | 225 | 29 | 87% |
 
 ### Docs
 
