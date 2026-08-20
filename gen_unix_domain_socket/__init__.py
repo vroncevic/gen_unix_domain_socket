@@ -18,6 +18,7 @@ Copyright
 Info
     Initialization module for the gen_unix_domain_socket.
 '''
+from __future__ import annotations
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_unix_domain_socket'

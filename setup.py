@@ -19,6 +19,7 @@ Copyright
 Info
     Defines setup for tool gen_unix_domain_socket.
 '''
+from __future__ import annotations
 
 from os import walk
 from os.path import abspath, dirname, join, relpath
