@@ -5,3 +5,4 @@ gen_unix_domain_socket
    :maxdepth: 4
 
    gen_unix_domain_socket
+   main
